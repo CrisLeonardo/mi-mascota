@@ -11,10 +11,11 @@ confirmó un negocio real). Proyecto final de Desarrollo Web, Universidad Marian
 sin scroll horizontal en 375 px). Documentación y guía de estudio escritas.
 
 **No hecho / no verificado:**
-- Repo creado: **https://github.com/CrisLeonardo/mi-mascota** (privado), ramas `main` y `develop`, commit inicial de
-  Cristopher. CI en verde en ambas (67 pruebas en PostgreSQL). **Faltan:** invitar a los otros 4 integrantes
-  (Settings → Collaborators) y proteger `main`: en repo privado de cuenta gratuita GitHub lo bloquea (403
-  "Upgrade to GitHub Pro") → hacerlo público o activar GitHub Pro con el Student Developer Pack.
+- Repo creado: **https://github.com/CrisLeonardo/mi-mascota** (público), ramas `main` y `develop`, commit inicial de
+  Cristopher. CI en verde en ambas (67 pruebas en PostgreSQL). `main` protegida: PR con 1 aprobación, check
+  `pruebas` obligatorio y al día, conversaciones resueltas, sin force push ni borrado (`enforce_admins` desactivado:
+  el dueño puede saltarse la regla en emergencias). `develop` sin protección. **Falta:** invitar a los otros 4
+  integrantes (Settings → Collaborators).
   **No commitear a nombre del equipo**: cada integrante debe tener commits propios (ver `docs/05_GIT_Y_COLABORACION.md`).
 - No desplegado en Render.
 - Tablero Scrum, entrevista al negocio real, nombres de integrantes (marcados con ✏️ en `docs/`) los debe completar el equipo. No fabricar historial ni evidencia.
@@ -69,7 +70,7 @@ Si cambias código o comportamiento, actualiza la guía, el PRD/API y la cifra d
 ## Siguientes pasos probables
 
 1. Que el equipo confirme el negocio real y complete los ✏️.
-2. Invitar colaboradores y proteger `main` (ver arriba); cada integrante trabaja en ramas desde `develop` con PRs.
+2. Invitar colaboradores (ver arriba); cada integrante trabaja en ramas desde `develop` con PRs.
 3. Desplegar en Render (`render.yaml`, `build.sh`), probar con el checklist de `docs/06`.
 4. Ejercicios 1-3 de la guía como contribuciones individuales con sus propios PRs.
 5. Opcional: `django-axes` (bloqueo de login); `ExclusionConstraint` como defensa extra a nivel de base.
