@@ -1,0 +1,12 @@
+{% extends "core/formulario.html" %}
+{% block titulo %}{% if object %}Editar consulta{% else %}Nueva consulta{% endif %}{% endblock %}
+{% block form_h1 %}{% if object %}Editar consulta{% else %}Registrar consulta{% endif %}{% endblock %}
+{% block form_volver %}{{ mascota.get_absolute_url }}{% endblock %}
+{% block form_antes %}
+<div class="card mb-3 border-success"><div class="card-body py-2">
+  <strong>{{ mascota.nombre }}</strong> · {{ mascota.get_especie_display }}{% if mascota.raza %} · {{ mascota.raza }}{% endif %} · {{ mascota.edad }}
+  <span class="text-muted">— Dueño: {{ mascota.cliente.nombre_completo }}</span>
+  {% if cita %}<div class="small text-muted">Cita del {{ cita.fecha_hora|date:"d/m/Y H:i" }} · {{ cita.servicio.nombre }}. Al guardar, la cita se marcará como atendida.</div>{% endif %}
+  {% if mascota.notas %}<div class="small text-danger mt-1"><i class="bi bi-exclamation-triangle"></i> {{ mascota.notas }}</div>{% endif %}
+</div></div>
+{% endblock %}

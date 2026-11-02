@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-hover mb-0">
+      <thead class="table-light"><tr><th>Vacuna</th><th>Mascota</th><th class="d-none d-md-table-cell">Aplicada</th><th>Próxima dosis</th>{% if puede_atender %}<th class="text-end"></th>{% endif %}</tr></thead>
+      <tbody>
+      {% for v in vacunas %}
+        <tr>
+          <td class="fw-semibold">{{ v.nombre }}</td>
+          <td><a class="text-decoration-none" href="{{ v.mascota.get_absolute_url }}">{{ v.mascota.nombre }}</a><br><span class="text-muted small">{{ v.mascota.cliente.nombre_completo }} · {{ v.mascota.cliente.telefono }}</span></td>
+          <td class="d-none d-md-table-cell">{{ v.fecha_aplicacion|date:"d/m/Y" }}</td>
+          <td>{% if v.proxima_dosis %}{{ v.proxima_dosis|date:"d/m/Y" }}{% if v.vencida %} <span class="badge text-bg-danger">Vencida</span>{% endif %}{% else %}—{% endif %}</td>
+          {% if puede_atender %}<td class="text-end"><a class="btn btn-sm btn-outline-primary" href="{% url 'expedientes:vacuna_editar' v.pk %}" title="Editar"><i class="bi bi-pencil"></i></a></td>{% endif %}
+        </tr>
+      {% empty %}
+        <tr><td colspan="5" class="text-center text-muted py-4">No hay vacunas registradas.</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% include "core/_paginacion.html" %}

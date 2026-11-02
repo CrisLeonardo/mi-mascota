@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block titulo %}Servicios{% endblock %}
+{% block content %}
+<div class="page-header">
+  <h1><i class="bi bi-clipboard2-pulse"></i> Servicios</h1>
+  {% if user.es_admin %}<a class="btn btn-primary" href="{% url 'servicios:servicio_crear' %}"><i class="bi bi-plus-lg"></i> Nuevo servicio</a>{% endif %}
+</div>
+
+<form method="get" class="row g-2 mb-3">
+  <div class="col-12 col-md-6"><input type="search" name="q" value="{{ request.GET.q }}" class="form-control" placeholder="Buscar servicio"></div>
+  <div class="col-auto"><button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i> Buscar</button></div>
+</form>
+
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-hover mb-0">
+      <thead class="table-light"><tr><th>Servicio</th><th class="d-none d-md-table-cell">Descripción</th><th class="text-end">Precio</th><th class="text-center">Duración</th><th>Estado</th>{% if user.es_admin %}<th class="text-end">Acciones</th>{% endif %}</tr></thead>
+      <tbody>
+      {% for s in servicios %}
+        <tr>
+          <td class="fw-semibold">{{ s.nombre }}</td>
+          <td class="d-none d-md-table-cell text-muted">{{ s.descripcion|truncatechars:70|default:"—" }}</td>
+          <td class="text-end">Q {{ s.precio|floatformat:2 }}</td>
+          <td class="text-center">{{ s.duracion_minutos }} min</td>
+          <td>{% if s.activo %}<span class="badge text-bg-success">Activo</span>{% else %}<span class="badge text-bg-secondary">Inactivo</span>{% endif %}</td>
+          {% if user.es_admin %}
+          <td class="text-end text-nowrap">
+            <a class="btn btn-sm btn-outline-primary" href="{% url 'servicios:servicio_editar' s.pk %}" title="Editar"><i class="bi bi-pencil"></i></a>
+            <a class="btn btn-sm btn-outline-danger" href="{% url 'servicios:servicio_eliminar' s.pk %}" title="Eliminar"><i class="bi bi-trash"></i></a>
+          </td>
+          {% endif %}
+        </tr>
+      {% empty %}
+        <tr><td colspan="6" class="text-center text-muted py-4">No hay servicios.</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

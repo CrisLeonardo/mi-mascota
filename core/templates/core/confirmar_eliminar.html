@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block titulo %}Eliminar{% endblock %}
+{% block content %}
+<div class="card mx-auto" style="max-width: 560px;">
+  <div class="card-body text-center p-4">
+    <i class="bi bi-exclamation-triangle text-danger" style="font-size: 2.5rem;"></i>
+    <h1 class="h4 mt-2">¿Eliminar «{{ object }}»?</h1>
+    <p class="text-muted">Esta acción no se puede deshacer. Si el registro tiene historial asociado, no se eliminará; en ese caso desactívalo desde su edición.</p>
+    <form method="post" class="d-flex gap-2 justify-content-center">
+      {% csrf_token %}
+      <a class="btn btn-outline-secondary" href="{{ url_cancelar }}">Cancelar</a>
+      <button class="btn btn-danger" type="submit"><i class="bi bi-trash"></i> Sí, eliminar</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

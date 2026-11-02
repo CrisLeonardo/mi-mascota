@@ -1,0 +1,31 @@
+{% load ui %}
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-hover mb-0">
+      <thead class="table-light">
+        <tr><th>Mascota</th><th>Especie / raza</th><th class="d-none d-md-table-cell">Edad</th><th>Dueño</th><th class="text-end">Acciones</th></tr>
+      </thead>
+      <tbody>
+      {% for m in mascotas %}
+        <tr>
+          <td><a class="fw-semibold text-decoration-none" href="{{ m.get_absolute_url }}"><i class="bi {{ m.especie|icono_especie }} me-1"></i>{{ m.nombre }}</a>
+            {% if not m.activo %}<span class="badge text-bg-secondary ms-1">Inactiva</span>{% endif %}</td>
+          <td>{{ m.get_especie_display }}{% if m.raza %} <span class="text-muted">· {{ m.raza }}</span>{% endif %}</td>
+          <td class="d-none d-md-table-cell">{{ m.edad }}</td>
+          <td><a class="text-decoration-none" href="{{ m.cliente.get_absolute_url }}">{{ m.cliente.nombre_completo }}</a></td>
+          <td class="text-end text-nowrap">
+            <a class="btn btn-sm btn-outline-secondary" href="{{ m.get_absolute_url }}" title="Ver expediente"><i class="bi bi-eye"></i></a>
+            {% if puede_gestionar %}
+            <a class="btn btn-sm btn-outline-primary" href="{% url 'clientes:mascota_editar' m.pk %}" title="Editar"><i class="bi bi-pencil"></i></a>
+            <a class="btn btn-sm btn-outline-danger" href="{% url 'clientes:mascota_eliminar' m.pk %}" title="Eliminar"><i class="bi bi-trash"></i></a>
+            {% endif %}
+          </td>
+        </tr>
+      {% empty %}
+        <tr><td colspan="5" class="text-center text-muted py-4">No se encontraron mascotas.</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% include "core/_paginacion.html" %}

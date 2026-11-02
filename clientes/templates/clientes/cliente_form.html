@@ -1,0 +1,4 @@
+{% extends "core/formulario.html" %}
+{% block titulo %}{% if object %}Editar cliente{% else %}Nuevo cliente{% endif %}{% endblock %}
+{% block form_h1 %}{% if object %}Editar cliente{% else %}Nuevo cliente{% endif %}{% endblock %}
+{% block form_volver %}{% url 'clientes:cliente_lista' %}{% endblock %}

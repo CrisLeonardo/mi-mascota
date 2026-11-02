@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block titulo %}Consultas{% endblock %}
+{% block content %}
+<div class="page-header">
+  <h1><i class="bi bi-file-medical"></i> Consultas</h1>
+  <a class="btn btn-outline-primary" href="{% url 'citas:cita_lista' %}?rango=hoy"><i class="bi bi-calendar-check"></i> Atender desde las citas</a>
+</div>
+
+<form method="get" data-busqueda data-destino="#resultados" class="row g-2 mb-3">
+  <div class="col-12 col-md-6"><input type="search" name="q" value="{{ request.GET.q }}" class="form-control" placeholder="Buscar por mascota, dueño o diagnóstico" autocomplete="off"></div>
+  <div class="col-auto"><button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button></div>
+</form>
+
+<div id="resultados">{% include "expedientes/_consulta_tabla.html" %}</div>
+{% endblock %}

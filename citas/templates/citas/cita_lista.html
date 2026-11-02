@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block titulo %}Citas{% endblock %}
+{% block content %}
+<div class="page-header">
+  <h1><i class="bi bi-calendar-check"></i> Citas</h1>
+  {% if puede_gestionar %}<a class="btn btn-primary" href="{% url 'citas:cita_crear' %}"><i class="bi bi-calendar-plus"></i> Agendar cita</a>{% endif %}
+</div>
+
+<form method="get" data-busqueda data-destino="#resultados" class="row g-2 mb-3">
+  <div class="col-12 col-lg-3"><input type="search" name="q" value="{{ request.GET.q }}" class="form-control" placeholder="Mascota o dueño" autocomplete="off"></div>
+  <div class="col-6 col-lg-2">
+    <select name="rango" class="form-select" aria-label="Periodo">
+      <option value="proximas" {% if rango == 'proximas' %}selected{% endif %}>Próximas</option>
+      <option value="hoy" {% if rango == 'hoy' %}selected{% endif %}>Hoy</option>
+      <option value="pasadas" {% if rango == 'pasadas' %}selected{% endif %}>Pasadas</option>
+      <option value="todas" {% if rango == 'todas' %}selected{% endif %}>Todas</option>
+    </select>
+  </div>
+  <div class="col-6 col-lg-2">
+    <select name="estado" class="form-select" aria-label="Estado">
+      <option value="">Todos los estados</option>
+      {% for valor, etiqueta in estados %}<option value="{{ valor }}" {% if request.GET.estado == valor %}selected{% endif %}>{{ etiqueta }}</option>{% endfor %}
+    </select>
+  </div>
+  <div class="col-8 col-lg-3">
+    <select name="veterinario" class="form-select" aria-label="Veterinario">
+      <option value="">Todos los veterinarios</option>
+      {% for v in veterinarios %}<option value="{{ v.pk }}" {% if request.GET.veterinario == v.pk|stringformat:"s" %}selected{% endif %}>{{ v.nombre_completo }}</option>{% endfor %}
+    </select>
+  </div>
+  <div class="col-auto"><button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button></div>
+</form>
+
+<div id="resultados">{% include "citas/_cita_tabla.html" %}</div>
+{% endblock %}
+
+{% block scripts %}<script src="{% static 'js/citas_lista.js' %}"></script>{% endblock %}

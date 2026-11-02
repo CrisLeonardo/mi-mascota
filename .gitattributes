@@ -1,0 +1,6 @@
+# Git normaliza los saltos de línea (LF en el repositorio; cada quien usa los de su sistema).
+* text=auto
+# Los scripts de despliegue se ejecutan en Linux (Render/Docker): siempre LF.
+*.sh text eol=lf
+Procfile text eol=lf
+Dockerfile text eol=lf

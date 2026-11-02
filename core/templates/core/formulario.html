@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% comment %}
+Plantilla genérica de formulario. Las plantillas de cada módulo la extienden y definen:
+  - bloque `titulo`       : título de la pestaña
+  - bloque `form_h1`      : encabezado de la página
+  - bloque `form_volver`  : URL del botón "Cancelar"
+  - bloque `form_antes`   : (opcional) contenido sobre el formulario
+Los campos se dibujan automáticamente; los textarea ocupan todo el ancho.
+{% endcomment %}
+{% block content %}
+<div class="page-header">
+  <h1>{% block form_h1 %}Formulario{% endblock %}</h1>
+</div>
+{% block form_antes %}{% endblock %}
+<div class="card">
+  <div class="card-body">
+    <form method="post" class="needs-validation row g-3" novalidate>
+      {% csrf_token %}
+      {% if form.non_field_errors %}
+        <div class="col-12"><div class="alert alert-danger mb-0">{{ form.non_field_errors }}</div></div>
+      {% endif %}
+      {% for campo in form.visible_fields %}
+        <div class="{% if campo.widget_type == 'textarea' %}col-12{% else %}col-md-6{% endif %}">
+          {% if campo.widget_type == 'checkbox' %}
+            <div class="form-check mt-md-4 pt-md-2">
+              {{ campo }}
+              <label class="form-check-label" for="{{ campo.id_for_label }}">{{ campo.label }}</label>
+            </div>
+          {% else %}
+            <label class="form-label" for="{{ campo.id_for_label }}">
+              {{ campo.label }}{% if campo.field.required %} <span class="text-danger">*</span>{% endif %}
+            </label>
+            {{ campo }}
+          {% endif %}
+          {% for error in campo.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}
+          {% if campo.help_text %}<div class="form-text">{{ campo.help_text }}</div>{% endif %}
+          <div class="invalid-feedback">Revisa este campo.</div>
+        </div>
+      {% endfor %}
+      {% block form_extra %}{% endblock %}
+      <div class="col-12 d-flex gap-2 justify-content-end pt-2">
+        <a class="btn btn-outline-secondary" href="{% block form_volver %}javascript:history.back(){% endblock %}">Cancelar</a>
+        <button class="btn btn-primary" type="submit"><i class="bi bi-check-lg"></i> Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

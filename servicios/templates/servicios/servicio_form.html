@@ -1,0 +1,4 @@
+{% extends "core/formulario.html" %}
+{% block titulo %}{% if object %}Editar servicio{% else %}Nuevo servicio{% endif %}{% endblock %}
+{% block form_h1 %}{% if object %}Editar servicio{% else %}Nuevo servicio{% endif %}{% endblock %}
+{% block form_volver %}{% url 'servicios:servicio_lista' %}{% endblock %}

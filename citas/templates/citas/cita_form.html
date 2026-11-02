@@ -1,0 +1,12 @@
+{% extends "core/formulario.html" %}
+{% load static %}
+{% block titulo %}{% if object %}Editar cita{% else %}Agendar cita{% endif %}{% endblock %}
+{% block form_h1 %}{% if object %}Editar cita{% else %}Agendar cita{% endif %}{% endblock %}
+{% block form_volver %}{% url 'citas:cita_lista' %}{% endblock %}
+{% block form_antes %}
+<div class="alert alert-info py-2">
+  <i class="bi bi-info-circle"></i> Elige servicio, veterinario y fecha: el sistema muestra solo las horas libres
+  (horario de atención de lunes a sábado).
+</div>
+{% endblock %}
+{% block scripts %}<script src="{% static 'js/cita_form.js' %}"></script>{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block titulo %}Clientes{% endblock %}
+{% block content %}
+<div class="page-header">
+  <h1><i class="bi bi-people"></i> Clientes</h1>
+  {% if puede_gestionar %}<a class="btn btn-primary" href="{% url 'clientes:cliente_crear' %}"><i class="bi bi-plus-lg"></i> Nuevo cliente</a>{% endif %}
+</div>
+
+<form method="get" data-busqueda data-destino="#resultados" class="row g-2 mb-3">
+  <div class="col-12 col-md-6"><input type="search" name="q" value="{{ request.GET.q }}" class="form-control" placeholder="Buscar por nombre, teléfono, correo o NIT" autocomplete="off"></div>
+  <div class="col-8 col-md-3">
+    <select name="estado" class="form-select" aria-label="Estado">
+      <option value="">Activos</option>
+      <option value="inactivos" {% if request.GET.estado == 'inactivos' %}selected{% endif %}>Inactivos</option>
+      <option value="todos" {% if request.GET.estado == 'todos' %}selected{% endif %}>Todos</option>
+    </select>
+  </div>
+  <div class="col-auto"><button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button></div>
+</form>
+
+<div id="resultados">{% include "clientes/_cliente_tabla.html" %}</div>
+{% endblock %}
