@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block titulo %}Vacunas{% endblock %}
+{% block content %}
+<div class="page-header">
+  <h1><i class="bi bi-shield-plus"></i> Vacunas</h1>
+  {% if puede_atender %}<a class="btn btn-primary" href="{% url 'expedientes:vacuna_crear' %}"><i class="bi bi-plus-lg"></i> Registrar vacuna</a>{% endif %}
+</div>
+
+<form method="get" data-busqueda data-destino="#resultados" class="row g-2 mb-3">
+  <div class="col-12 col-md-5"><input type="search" name="q" value="{{ request.GET.q }}" class="form-control" placeholder="Buscar por vacuna, mascota o dueño" autocomplete="off"></div>
+  <div class="col-8 col-md-4">
+    <select name="refuerzo" class="form-select" aria-label="Refuerzo">
+      <option value="">Todas las vacunas</option>
+      <option value="pendiente" {% if request.GET.refuerzo == 'pendiente' %}selected{% endif %}>Refuerzo vencido o en 30 días</option>
+    </select>
+  </div>
+  <div class="col-auto"><button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button></div>
+</form>
+
+<div id="resultados">{% include "expedientes/_vacuna_tabla.html" %}</div>
+{% endblock %}

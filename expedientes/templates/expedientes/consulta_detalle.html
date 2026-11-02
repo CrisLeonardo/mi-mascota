@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block titulo %}Consulta{% endblock %}
+{% block content %}
+<div class="page-header">
+  <h1><i class="bi bi-file-medical"></i> Consulta de {{ object.mascota.nombre }}</h1>
+  <div class="d-flex gap-2">
+    <a class="btn btn-outline-secondary" href="{{ object.mascota.get_absolute_url }}"><i class="bi bi-arrow-left"></i> Expediente</a>
+    {% if puede_atender %}<a class="btn btn-primary" href="{% url 'expedientes:consulta_editar' object.pk %}"><i class="bi bi-pencil"></i> Editar</a>{% endif %}
+  </div>
+</div>
+
+<div class="card"><div class="card-body">
+  <div class="row">
+    <div class="col-md-4"><div class="dato"><span class="etiqueta">Fecha</span>{{ object.fecha|date:"d/m/Y H:i" }}</div></div>
+    <div class="col-md-4"><div class="dato"><span class="etiqueta">Veterinario</span>{{ object.veterinario.nombre_completo }}</div></div>
+    <div class="col-md-4"><div class="dato"><span class="etiqueta">Dueño</span><a href="{{ object.mascota.cliente.get_absolute_url }}">{{ object.mascota.cliente.nombre_completo }}</a></div></div>
+    <div class="col-md-4"><div class="dato"><span class="etiqueta">Peso</span>{% if object.peso_kg %}{{ object.peso_kg }} kg{% else %}—{% endif %}</div></div>
+    <div class="col-md-4"><div class="dato"><span class="etiqueta">Temperatura</span>{% if object.temperatura_c %}{{ object.temperatura_c }} °C{% else %}—{% endif %}</div></div>
+    <div class="col-md-4"><div class="dato"><span class="etiqueta">Costo</span>Q {{ object.costo|floatformat:2 }}</div></div>
+  </div>
+  <hr>
+  <div class="dato"><span class="etiqueta">Síntomas</span>{{ object.sintomas|linebreaksbr }}</div>
+  <div class="dato"><span class="etiqueta">Diagnóstico</span>{{ object.diagnostico|linebreaksbr }}</div>
+  <div class="dato"><span class="etiqueta">Tratamiento</span>{{ object.tratamiento|linebreaksbr }}</div>
+  <div class="dato"><span class="etiqueta">Observaciones</span>{{ object.observaciones|default:"—"|linebreaksbr }}</div>
+</div></div>
+{% endblock %}

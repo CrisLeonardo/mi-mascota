@@ -1,0 +1,4 @@
+{% extends "core/formulario.html" %}
+{% block titulo %}{% if object %}Editar usuario{% else %}Nuevo usuario{% endif %}{% endblock %}
+{% block form_h1 %}{% if object %}Editar usuario: {{ object.username }}{% else %}Nuevo usuario{% endif %}{% endblock %}
+{% block form_volver %}{% url 'accounts:usuario_lista' %}{% endblock %}

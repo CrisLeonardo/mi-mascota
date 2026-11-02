@@ -1,0 +1,4 @@
+{% extends "core/formulario.html" %}
+{% block titulo %}{% if object %}Editar mascota{% else %}Nueva mascota{% endif %}{% endblock %}
+{% block form_h1 %}{% if object %}Editar mascota{% else %}Nueva mascota{% endif %}{% endblock %}
+{% block form_volver %}{% url 'clientes:mascota_lista' %}{% endblock %}

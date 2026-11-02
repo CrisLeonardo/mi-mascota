@@ -1,0 +1,75 @@
+:root {
+  --marca: #0f766e;
+  --marca-oscura: #115e59;
+  --lateral: #12303a;
+  --ancho-lateral: 250px;
+}
+
+body { background: #f4f7f8; }
+
+/* ------------------------------------------------------------ layout */
+.app-shell { display: flex; min-height: 100vh; }
+.main-area { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.topbar {
+  display: flex; align-items: center; gap: .75rem;
+  padding: .6rem 1rem; background: #fff; border-bottom: 1px solid #e3e8ea;
+  position: sticky; top: 0; z-index: 100;
+}
+.content { padding: 1.25rem; flex: 1; }
+@media (min-width: 992px) { .content { padding: 1.75rem 2rem; } }
+
+/* ------------------------------------------------------------ menú lateral */
+.sidebar { background: var(--lateral); color: #cfe0e4; width: var(--ancho-lateral); }
+@media (min-width: 992px) {
+  .sidebar { position: sticky; top: 0; height: 100vh; flex-shrink: 0; display: flex; flex-direction: column; }
+}
+.sidebar .offcanvas-header { color: #fff; border-bottom: 1px solid rgba(255,255,255,.1); }
+.sidebar-brand {
+  align-items: center; gap: .5rem; padding: 1.1rem 1.25rem;
+  color: #fff; font-weight: 600; font-size: 1.05rem; border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.sidebar-brand i { color: #5eead4; font-size: 1.4rem; }
+.sidebar-nav { padding: .75rem .6rem; }
+.sidebar-nav .nav-heading {
+  text-transform: uppercase; font-size: .68rem; letter-spacing: .08em;
+  color: #7f9aa3; padding: .9rem .75rem .3rem;
+}
+.sidebar-nav .nav-link {
+  color: #cfe0e4; border-radius: .5rem; padding: .55rem .75rem; display: flex; align-items: center; gap: .6rem;
+}
+.sidebar-nav .nav-link:hover { background: rgba(255,255,255,.07); color: #fff; }
+.sidebar-nav .nav-link.active { background: var(--marca); color: #fff; }
+.sidebar-footer { padding: 1rem 1.25rem; color: #7f9aa3; border-top: 1px solid rgba(255,255,255,.1); }
+
+/* ------------------------------------------------------------ componentes */
+.btn-primary { --bs-btn-bg: var(--marca); --bs-btn-border-color: var(--marca);
+  --bs-btn-hover-bg: var(--marca-oscura); --bs-btn-hover-border-color: var(--marca-oscura);
+  --bs-btn-active-bg: var(--marca-oscura); --bs-btn-active-border-color: var(--marca-oscura); }
+.btn-outline-primary { --bs-btn-color: var(--marca); --bs-btn-border-color: var(--marca);
+  --bs-btn-hover-bg: var(--marca); --bs-btn-hover-border-color: var(--marca); --bs-btn-active-bg: var(--marca); }
+a { color: var(--marca); }
+.text-bg-primary { background-color: var(--marca) !important; }
+.card { border: 1px solid #e3e8ea; border-radius: .75rem; }
+.page-header { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; }
+.page-header h1 { font-size: 1.5rem; margin: 0; }
+
+.stat-card { display: flex; align-items: center; gap: .9rem; padding: 1rem 1.1rem; }
+.stat-card .icono {
+  width: 46px; height: 46px; border-radius: .75rem; display: grid; place-items: center;
+  font-size: 1.3rem; background: #e6f4f1; color: var(--marca); flex-shrink: 0;
+}
+.stat-card .valor { font-size: 1.55rem; font-weight: 700; line-height: 1.1; }
+.stat-card .etiqueta { color: #6b7c82; font-size: .85rem; }
+
+.table > :not(caption) > * > * { vertical-align: middle; }
+.table-responsive { border-radius: .75rem; }
+
+.auth-wrap { min-height: 100vh; display: grid; place-items: center; padding: 1rem;
+  background: linear-gradient(135deg, #12303a 0%, #0f766e 100%); }
+.auth-card { width: 100%; max-width: 400px; }
+
+.dato { margin-bottom: .6rem; }
+.dato .etiqueta { display: block; font-size: .75rem; text-transform: uppercase; letter-spacing: .04em; color: #6b7c82; }
+
+/* Tabla que se recarga con fetch: pequeña animación para que se note el cambio */
+.cargando { opacity: .5; transition: opacity .15s; pointer-events: none; }

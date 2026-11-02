@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load ui %}
+{% block titulo %}Cita{% endblock %}
+{% block content %}
+<div class="page-header">
+  <h1><i class="bi bi-calendar-event"></i> Cita de {{ object.mascota.nombre }}
+    <span class="badge fs-6 {{ object.estado|clase_estado }}">{{ object.get_estado_display }}</span></h1>
+  <div class="d-flex flex-wrap gap-2">
+    <a class="btn btn-outline-secondary" href="{% url 'citas:cita_lista' %}"><i class="bi bi-arrow-left"></i> Volver</a>
+    {% if puede_gestionar and object.es_editable %}<a class="btn btn-outline-primary" href="{% url 'citas:cita_editar' object.pk %}"><i class="bi bi-pencil"></i> Editar</a>{% endif %}
+    {% if puede_atender and object.es_atendible %}<a class="btn btn-success" href="{% url 'expedientes:consulta_crear' %}?cita={{ object.pk }}"><i class="bi bi-clipboard2-pulse"></i> Atender</a>{% endif %}
+  </div>
+</div>
+
+<div class="card"><div class="card-body">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="dato"><span class="etiqueta">Fecha</span>{{ object.fecha_hora|date:"l d \d\e F \d\e Y" }}</div>
+      <div class="dato"><span class="etiqueta">Horario</span>{{ object.fecha_hora|date:"H:i" }} a {{ object.fin|date:"H:i" }} ({{ object.duracion_minutos }} min)</div>
+      <div class="dato"><span class="etiqueta">Servicio</span>{{ object.servicio.nombre }} · Q {{ object.servicio.precio|floatformat:2 }}</div>
+      <div class="dato"><span class="etiqueta">Veterinario</span>{{ object.veterinario.nombre_completo }}</div>
+    </div>
+    <div class="col-md-6">
+      <div class="dato"><span class="etiqueta">Mascota</span><a href="{{ object.mascota.get_absolute_url }}">{{ object.mascota.nombre }}</a> ({{ object.mascota.get_especie_display }})</div>
+      <div class="dato"><span class="etiqueta">Dueño</span><a href="{{ object.mascota.cliente.get_absolute_url }}">{{ object.mascota.cliente.nombre_completo }}</a> · {{ object.mascota.cliente.telefono }}</div>
+      <div class="dato"><span class="etiqueta">Motivo</span>{{ object.motivo|default:"—"|linebreaksbr }}</div>
+      <div class="dato"><span class="etiqueta">Agendada por</span>{{ object.creado_por.nombre_completo|default:"—" }} el {{ object.creado|date:"d/m/Y H:i" }}</div>
+    </div>
+  </div>
+  {% if object.consulta %}
+    <hr><a href="{{ object.consulta.get_absolute_url }}" class="btn btn-outline-success"><i class="bi bi-file-medical"></i> Ver consulta registrada</a>
+  {% endif %}
+</div></div>
+{% endblock %}

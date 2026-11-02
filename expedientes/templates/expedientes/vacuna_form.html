@@ -1,0 +1,4 @@
+{% extends "core/formulario.html" %}
+{% block titulo %}{% if object %}Editar vacuna{% else %}Registrar vacuna{% endif %}{% endblock %}
+{% block form_h1 %}{% if object %}Editar vacuna{% else %}Registrar vacuna{% endif %}{% endblock %}
+{% block form_volver %}{% url 'expedientes:vacuna_lista' %}{% endblock %}
