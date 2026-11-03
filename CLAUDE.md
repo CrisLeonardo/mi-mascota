@@ -17,6 +17,7 @@ sin scroll horizontal en 375 px). Documentación y guía de estudio escritas.
   el dueño puede saltarse la regla en emergencias). `develop` sin protección. **Falta:** invitar a los otros 4
   integrantes (Settings → Collaborators).
   **No commitear a nombre del equipo**: cada integrante debe tener commits propios (ver `docs/05_GIT_Y_COLABORACION.md`).
+- Tablero Scrum creado: https://github.com/users/CrisLeonardo/projects/1 (privado, ligado al repo; 5 columnas del enunciado). 18 historias = issues #1-#18 con hitos Sprint 1-4, **sin responsable ni cerradas a propósito** (el equipo las toma y mueve con evidencia; no marcar nada como Finalizado por ellos). Falta: darle acceso al proyecto a los compañeros y decidir si se hace público para el docente.
 - No desplegado en Render.
 - Tablero Scrum, entrevista al negocio real, nombres de integrantes (marcados con ✏️ en `docs/`) los debe completar el equipo. No fabricar historial ni evidencia.
 - Screenshots del navegador fallaron en la sesión; el responsivo se verificó con mediciones, no a ojo.
