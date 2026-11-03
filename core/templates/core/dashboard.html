@@ -2,54 +2,56 @@
 {% load static ui %}
 {% block titulo %}Panel{% endblock %}
 {% block content %}
-<div class="page-header">
+<section class="hero">
   <div>
-    <h1>Hola, {{ user.first_name|default:user.username }} 👋</h1>
-    <div class="text-muted">{% now "l d \d\e F \d\e Y" %}</div>
+    <h1>Hola, {{ user.first_name|default:user.username }} <span class="mano">👋</span></h1>
+    <div class="fecha">{% now "l d \d\e F \d\e Y" %}</div>
   </div>
-  {% if puede_gestionar %}<a class="btn btn-primary" href="{% url 'citas:cita_crear' %}"><i class="bi bi-calendar-plus"></i> Agendar cita</a>{% endif %}
-</div>
+  {% if puede_gestionar %}<a class="btn btn-hero btn-lg" href="{% url 'citas:cita_crear' %}"><i class="bi bi-calendar-plus"></i> Agendar cita</a>{% endif %}
+  <span class="patitas" aria-hidden="true">🐾</span>
+</section>
 
 <div class="row g-3 mb-3">
-  <div class="col-6 col-xl-3"><div class="card stat-card"><div class="icono"><i class="bi bi-calendar-day"></i></div><div><div class="valor">{{ resumen.citas_hoy }}</div><div class="etiqueta">Citas de hoy</div></div></div></div>
-  <div class="col-6 col-xl-3"><div class="card stat-card"><div class="icono"><i class="bi bi-hourglass-split"></i></div><div><div class="valor">{{ resumen.citas_pendientes }}</div><div class="etiqueta">Por confirmar</div></div></div></div>
-  <div class="col-6 col-xl-3"><div class="card stat-card"><div class="icono"><i class="bi bi-piggy-bank"></i></div><div><div class="valor">{{ resumen.mascotas }}</div><div class="etiqueta">Mascotas activas</div></div></div></div>
-  <div class="col-6 col-xl-3"><div class="card stat-card"><div class="icono"><i class="bi bi-cash-coin"></i></div><div><div class="valor">Q {{ resumen.ingresos_30d|floatformat:0 }}</div><div class="etiqueta">Ingresos (30 días)</div></div></div></div>
+  <div class="col-6 col-xl-3"><div class="card stat-card"><div class="icono"><i class="bi bi-calendar-day"></i></div><div class="valor"><span data-contar="{{ resumen.citas_hoy }}">{{ resumen.citas_hoy }}</span></div><div class="etiqueta">Citas de hoy</div></div></div>
+  <div class="col-6 col-xl-3"><div class="card stat-card tono-ambar"><div class="icono"><i class="bi bi-hourglass-split"></i></div><div class="valor"><span data-contar="{{ resumen.citas_pendientes }}">{{ resumen.citas_pendientes }}</span></div><div class="etiqueta">Por confirmar</div></div></div>
+  <div class="col-6 col-xl-3"><div class="card stat-card tono-azul"><div class="icono"><i class="bi bi-piggy-bank"></i></div><div class="valor"><span data-contar="{{ resumen.mascotas }}">{{ resumen.mascotas }}</span></div><div class="etiqueta">Mascotas activas</div></div></div>
+  <div class="col-6 col-xl-3"><div class="card stat-card tono-verde"><div class="icono"><i class="bi bi-cash-coin"></i></div><div class="valor"><span data-contar="{{ resumen.ingresos_30d|floatformat:'0u' }}" data-prefijo="Q ">Q {{ resumen.ingresos_30d|floatformat:"0u" }}</span></div><div class="etiqueta">Ingresos (30 días)</div></div></div>
 </div>
 
 <div class="row g-3">
   <div class="col-lg-7">
     <div class="card mb-3"><div class="card-body">
-      <h2 class="h6 text-muted text-uppercase">{% if user.es_veterinario %}Mis citas de hoy{% else %}Citas de hoy{% endif %}</h2>
+      <h2 class="h6 text-uppercase">{% if user.es_veterinario %}Mis citas de hoy{% else %}Citas de hoy{% endif %}</h2>
       {% for c in citas_hoy %}
-        <a class="d-flex justify-content-between align-items-center text-decoration-none border-bottom py-2" href="{{ c.get_absolute_url }}">
-          <span><strong>{{ c.fecha_hora|date:"H:i" }}</strong> · {{ c.mascota.nombre }} <span class="text-muted">({{ c.mascota.cliente.nombre_completo }})</span><br>
+        <a class="cita-hoy text-decoration-none border-bottom py-2 d-flex" href="{{ c.get_absolute_url }}">
+          <span class="hora">{{ c.fecha_hora|date:"H:i" }}</span>
+          <span class="cuerpo"><strong>{{ c.mascota.nombre }}</strong> <span class="text-muted">({{ c.mascota.cliente.nombre_completo }})</span><br>
             <span class="small text-muted">{{ c.servicio.nombre }}{% if not user.es_veterinario %} · {{ c.veterinario.nombre_completo }}{% endif %}</span></span>
           <span class="badge {{ c.estado|clase_estado }}">{{ c.get_estado_display }}</span>
         </a>
-      {% empty %}<p class="text-muted mb-0">No hay citas programadas para hoy.</p>{% endfor %}
+      {% empty %}<p class="text-muted mb-0 text-center py-3"><span class="d-block fs-2">🐾</span>No hay citas programadas para hoy.</p>{% endfor %}
     </div></div>
 
     <div class="card"><div class="card-body">
-      <h2 class="h6 text-muted text-uppercase">Citas de los próximos 7 días</h2>
-      <canvas id="grafica-dias" height="130" aria-label="Citas por día"></canvas>
+      <h2 class="h6 text-uppercase">Citas de los próximos 7 días</h2>
+      <div class="grafica"><canvas id="grafica-dias" aria-label="Citas por día"></canvas></div>
     </div></div>
   </div>
 
   <div class="col-lg-5">
     <div class="card mb-3"><div class="card-body">
-      <h2 class="h6 text-muted text-uppercase">Citas por estado</h2>
-      <div style="max-width: 260px; margin: 0 auto;"><canvas id="grafica-estados" aria-label="Citas por estado"></canvas></div>
+      <h2 class="h6 text-uppercase">Citas por estado</h2>
+      <div class="grafica dona"><canvas id="grafica-estados" aria-label="Citas por estado"></canvas></div>
     </div></div>
 
     <div class="card"><div class="card-body">
-      <h2 class="h6 text-muted text-uppercase">Refuerzos de vacuna (30 días)</h2>
+      <h2 class="h6 text-uppercase">Refuerzos de vacuna (30 días)</h2>
       {% for v in refuerzos %}
-        <a class="d-flex justify-content-between text-decoration-none border-bottom py-2" href="{{ v.mascota.get_absolute_url }}">
-          <span>{{ v.mascota.nombre }} <span class="text-muted small">· {{ v.nombre }}</span></span>
-          <span class="text-muted small">{{ v.proxima_dosis|date:"d/m" }}</span>
+        <a class="d-flex justify-content-between align-items-center text-decoration-none border-bottom py-2" href="{{ v.mascota.get_absolute_url }}">
+          <span><i class="bi bi-shield-plus text-success me-2"></i><strong>{{ v.mascota.nombre }}</strong> <span class="text-muted small">· {{ v.nombre }}</span></span>
+          <span class="badge text-bg-primary">{{ v.proxima_dosis|date:"d/m" }}</span>
         </a>
-      {% empty %}<p class="text-muted mb-0">Sin refuerzos próximos.</p>{% endfor %}
+      {% empty %}<p class="text-muted mb-0 text-center py-3"><span class="d-block fs-2">💉</span>Sin refuerzos próximos.</p>{% endfor %}
     </div></div>
   </div>
 </div>
