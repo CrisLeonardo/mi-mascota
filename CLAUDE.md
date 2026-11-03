@@ -11,8 +11,14 @@ confirmó un negocio real). Proyecto final de Desarrollo Web, Universidad Marian
 sin scroll horizontal en 375 px). Documentación y guía de estudio escritas.
 
 **No hecho / no verificado:**
-- Sin `git init`: no hay repositorio ni commits todavía. **No commitear a nombre del equipo**: cada integrante debe tener commits propios (ver `docs/05_GIT_Y_COLABORACION.md`).
-- No desplegado en Render. El CI de GitHub Actions (`.github/workflows/ci.yml`) nunca se ha ejecutado en GitHub (no hay repo), aunque sus pasos sí pasan localmente en Docker (ver abajo).
+- Repo creado: **https://github.com/CrisLeonardo/mi-mascota** (público), ramas `main` y `develop`, commit inicial de
+  Cristopher. CI en verde en ambas (67 pruebas en PostgreSQL). `main` protegida: PR con 1 aprobación, check
+  `pruebas` obligatorio y al día, conversaciones resueltas, sin force push ni borrado (`enforce_admins` desactivado:
+  el dueño puede saltarse la regla en emergencias). `develop` sin protección. **Falta:** invitar a los otros 4
+  integrantes (Settings → Collaborators).
+  **No commitear a nombre del equipo**: cada integrante debe tener commits propios (ver `docs/05_GIT_Y_COLABORACION.md`).
+- Tablero Scrum creado: https://github.com/users/CrisLeonardo/projects/1 (público, ligado al repo; 5 columnas del enunciado). 18 historias = issues #1-#18 con hitos Sprint 1-4, **sin responsable ni cerradas a propósito** (el equipo las toma y mueve con evidencia; no marcar nada como Finalizado por ellos). Falta: que cada integrante se asigne sus historias (como el tablero es público, ya lo ve el docente; para editar, los compañeros necesitan acceso en Settings → Manage access).
+- No desplegado en Render.
 - Tablero Scrum, entrevista al negocio real, nombres de integrantes (marcados con ✏️ en `docs/`) los debe completar el equipo. No fabricar historial ni evidencia.
 - Screenshots del navegador fallaron en la sesión; el responsivo se verificó con mediciones, no a ojo.
 
@@ -65,7 +71,7 @@ Si cambias código o comportamiento, actualiza la guía, el PRD/API y la cifra d
 ## Siguientes pasos probables
 
 1. Que el equipo confirme el negocio real y complete los ✏️.
-2. Crear repo en GitHub (cada integrante con su identidad git), proteger `main`, correr el CI por primera vez y corregir lo que falle en PostgreSQL.
+2. Invitar colaboradores (ver arriba); cada integrante trabaja en ramas desde `develop` con PRs.
 3. Desplegar en Render (`render.yaml`, `build.sh`), probar con el checklist de `docs/06`.
 4. Ejercicios 1-3 de la guía como contribuciones individuales con sus propios PRs.
 5. Opcional: `django-axes` (bloqueo de login); `ExclusionConstraint` como defensa extra a nivel de base.

@@ -26,7 +26,9 @@ Tablero con estas columnas (mínimo exigido): **Product Backlog → Sprint Backl
 Cada tarjeta debe tener: responsable · historia de usuario · criterios de aceptación · etiqueta de sprint · y, al
 pasar a *Finalizado*, **evidencia** (enlace al Pull Request, captura o GIF).
 
-Para cargar el backlog de golpe:
+**Tablero del equipo:** <https://github.com/users/CrisLeonardo/projects/1> (GitHub Projects, ligado al repositorio). Las 18 historias están como issues (#1 a #18) con su hito de sprint, en la columna *Product Backlog* y sin responsable: cada integrante se asigna las suyas y las mueve con evidencia.
+
+Para cargar el backlog de golpe (ya hecho en GitHub):
 - **GitHub Projects:** crear issues con `docs/BACKLOG.csv` (o copiar a mano) usando la plantilla "Historia de usuario".
 - **Trello:** *Importar CSV* con Power-Up "Import" o crear las tarjetas pegando la columna `Historia`.
 
