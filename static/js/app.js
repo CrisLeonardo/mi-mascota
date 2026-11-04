@@ -107,7 +107,10 @@
       const params = new URLSearchParams(new FormData(form));
       for (const [k, v] of [...params]) if (v === "") params.delete(k);
       params.set("parcial", "1");
-      return `${form.action || location.pathname}?${params}`;
+      // form.action sin atributo devuelve la URL actual con su query string; se toma solo la ruta
+      // para no acumular parámetros (?q=a?q=ab...) en cada búsqueda.
+      const ruta = new URL(form.getAttribute("action") || location.pathname, location.href).pathname;
+      return `${ruta}?${params}`;
     }
 
     form.addEventListener("input", (e) => {
