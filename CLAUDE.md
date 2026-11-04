@@ -18,7 +18,7 @@ sin scroll horizontal en 375 px). Documentación y guía de estudio escritas.
 - Diagrama ER exportado: `docs/diagrama_er.svg` (generado desde `diagrama_er.html` con Mermaid).
 
 **Pendiente (solo lo puede hacer el usuario):**
-- Hacer el checklist manual de `docs/06` en la URL de Render (login con usuarios demo si `SEED_DEMO=true`).
+- Checklist manual de `docs/06`: los 20 casos pasaron en **local** el 2026-11-03 (y se corrigió un bug de búsqueda en vivo en `app.js`). Falta repetirlo **con sesión en Render** (lo debe hacer el usuario o iniciar sesión él en el pane del navegador).
 - Si consigue una veterinaria real (aunque sea una llamada de 10 min), reemplazar la sección 2 de `docs/01` con respuestas reales.
 - Estudiar `GUIA_DE_ESTUDIO.md` y ensayar la presentación (`docs/09`).
 - Screenshots del navegador fallaron en sesiones anteriores; en esta se verificó el login móvil (las animaciones de entrada no avanzan en el pane emulado: terminarlas con `document.getAnimations().forEach(a=>a.finish())` antes de la captura).
