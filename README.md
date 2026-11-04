@@ -6,6 +6,8 @@ clínicos, control de vacunas, panel de indicadores y API REST. Proyecto final d
 
 > 📘 **¿Primera vez con el proyecto? Empieza por [`GUIA_DE_ESTUDIO.md`](GUIA_DE_ESTUDIO.md).**
 
+**Aplicación desplegada:** <https://mi-mascota-o2sm.onrender.com> (plan gratuito de Render: la primera visita puede tardar ~30 s en despertar).
+
 **Stack:** Django 5.2 · Django REST Framework · PostgreSQL (SQLite en local) · Bootstrap 5 · JavaScript (fetch) · Chart.js · GitHub Actions · Render
 
 ## Ejecutar en tu computadora
