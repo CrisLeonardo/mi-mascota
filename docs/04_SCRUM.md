@@ -1,20 +1,16 @@
 # 4. Gestión del proyecto con Scrum
 
-> ⚠️ **Importante:** el enunciado dice que el tablero debe mostrar *"el historial real del trabajo realizado"* y que las
-> tareas deben tener *responsables y evidencia*. Este documento es la **plantilla y el plan**; el tablero
-> (Trello / GitHub Projects / Jira), las reuniones y el reparto de tareas **deben ser reales y hechos por el equipo**.
-> Un tablero armado de golpe el último día se nota (las fechas de creación y movimiento quedan registradas).
-> Los ✏️ son datos que ustedes completan.
+> **Transparencia:** el grupo está inscrito con 5 integrantes, pero **solo Cristopher Leonardo Zepeda Esquivel
+> trabajó en el proyecto**; los demás no respondieron ni participaron. Por eso este documento no inventa
+> reuniones, retrospectivas ni repartos de tareas que no ocurrieron: el tablero y el historial de Git reflejan que
+> una sola persona asumió todos los roles.
 
 ## 1. Equipo y roles
 
-| Integrante | Rol Scrum | Responsabilidad principal | Áreas técnicas que dominará |
+| Integrante | Rol Scrum | Responsabilidad principal | Áreas técnicas |
 |---|---|---|---|
-| ✏️ Nombre 1 | **Product Owner** | Define y prioriza el Product Backlog; valida con el negocio | PRD, levantamiento, criterios de aceptación, pruebas de aceptación |
-| ✏️ Nombre 2 | **Scrum Master** | Organiza reuniones, tablero, quita obstáculos | Git/GitHub (ramas, PR), CI/CD, despliegue |
-| ✏️ Nombre 3 | Desarrollador | Backend | Modelos, vistas, reglas de negocio de citas |
-| ✏️ Nombre 4 | Desarrollador | Frontend | Plantillas, Bootstrap, JavaScript/fetch |
-| ✏️ Nombre 5 | Desarrollador | API y calidad | API REST, pruebas automáticas, seguridad |
+| Cristopher Leonardo Zepeda Esquivel (`CrisLeonardo`) | **Product Owner, Scrum Master y Desarrollador** (todos los roles) | Priorizar el backlog, organizar el tablero y construir, probar y desplegar el sistema | PRD y levantamiento, Git/GitHub y CI, backend, frontend, API REST, pruebas, seguridad y despliegue |
+| Otros 4 integrantes del grupo | Sin participación | — | — |
 
 Regla del curso: **todos deben saber explicar todo el proyecto** (ver `GUIA_DE_ESTUDIO.md`). El PO y el SM también
 programan o documentan.
@@ -26,7 +22,7 @@ Tablero con estas columnas (mínimo exigido): **Product Backlog → Sprint Backl
 Cada tarjeta debe tener: responsable · historia de usuario · criterios de aceptación · etiqueta de sprint · y, al
 pasar a *Finalizado*, **evidencia** (enlace al Pull Request, captura o GIF).
 
-**Tablero del equipo:** <https://github.com/users/CrisLeonardo/projects/1> (GitHub Projects, ligado al repositorio). Las 18 historias están como issues (#1 a #18) con su hito de sprint, en la columna *Product Backlog* y sin responsable: cada integrante se asigna las suyas y las mueve con evidencia.
+**Tablero del equipo:** <https://github.com/users/CrisLeonardo/projects/1> (GitHub Projects, ligado al repositorio). Las 18 historias son los issues #1 a #18 con su hito de sprint, asignadas a `CrisLeonardo`. Cada una se cerró con un comentario de evidencia (commits, PR, ejecución de CI y URL desplegada) y está en la columna *Finalizado*. El tablero y los issues conservan las fechas reales de creación y cierre.
 
 Para cargar el backlog de golpe (ya hecho en GitHub):
 - **GitHub Projects:** crear issues con `docs/BACKLOG.csv` (o copiar a mano) usando la plantilla "Historia de usuario".
@@ -80,40 +76,29 @@ Versión importable: [`BACKLOG.csv`](BACKLOG.csv). Puntos = esfuerzo relativo (1
 
 **Total:** 18 historias · 83 puntos.
 
-## 6. Reparto sugerido (para evitar que una persona haga todo)
+## 6. Reparto del trabajo
 
-Cada integrante debe tener **commits y Pull Requests propios** en todos los sprints. Una forma equilibrada:
+Las 18 historias (83 puntos) fueron desarrolladas por Cristopher Leonardo Zepeda Esquivel. El reparto sugerido en
+la plantilla original (un integrante por módulo) **no se pudo aplicar** porque el resto del grupo no participó.
+Se deja constancia en lugar de simular contribuciones: el historial de commits y Pull Requests del repositorio
+muestra un único autor.
 
-| Integrante | Sprint 1 | Sprint 2 | Sprint 3 | Sprint 4 |
-|---|---|---|---|---|
-| 1 (PO) | HU-04 (UI clientes), PRD | HU-10 | HU-13 (historial) | HU-18 |
-| 2 (SM) | HU-01, repo + CI | HU-08 | HU-12 | HU-17 (despliegue) |
-| 3 (Back) | HU-02, HU-03 | HU-07 (reglas de citas) | HU-11 | HU-16 (pruebas citas) |
-| 4 (Front) | HU-05, HU-06 | HU-09 (fetch estados) | HU-14 | HU-16 (pruebas UI) |
-| 5 (API) | HU-04 (búsqueda) | API de citas | HU-15 (panel + API) | HU-16 (pruebas API) |
+## 7. Seguimiento
 
-> El código ya está construido. Para que el historial de Git/tablero sea honesto, repártanse **módulos para
-> estudiar, mejorar y extender** (por ejemplo: cada uno agrega pruebas, mejora la UI de su módulo, corrige
-> detalles o amplía una funcionalidad con su propio Pull Request). Vean `05_GIT_Y_COLABORACION.md`.
-
-## 7. Seguimiento (burndown simple)
-
-Lleven esta tabla actualizada al cierre de cada sprint ✏️:
-
-| Sprint | Puntos planeados | Puntos terminados | Observaciones / lecciones |
+| Sprint | Puntos planeados | Puntos terminados | Observaciones |
 |---|:-:|:-:|---|
-| 0 | — | — | |
-| 1 | 26 | | |
-| 2 | 19 | | |
-| 3 | 25 | | |
-| 4 | 13 | | |
+| 0 | — | — | Levantamiento, PRD, ER, repositorio, tablero y proyecto base (un solo integrante). |
+| 1 | 26 | 26 | HU-01 a HU-06. |
+| 2 | 19 | 19 | HU-07 a HU-10. |
+| 3 | 25 | 25 | HU-11 a HU-15. |
+| 4 | 13 | 13 | HU-16 a HU-18: 67 pruebas, CI en GitHub Actions, despliegue en Render y documentación. |
 
-## 8. Plantilla de acta de retrospectiva ✏️
+Los sprints son una **agrupación lógica de las historias**; no hubo reuniones de planificación, daily ni
+retrospectivas con un equipo, porque el trabajo lo realizó una sola persona.
 
-```
-Sprint N — Fecha:
-Asistentes:
-✅ Qué salió bien:
-⚠️ Qué mejorar:
-🎯 Acuerdo para el próximo sprint:
-```
+## 8. Lecciones aprendidas
+
+- ⚠️ **Principal riesgo materializado:** el grupo de 5 quedó en 1 persona. Se mitigó automatizando lo repetible
+  (pruebas y CI) y documentando todo para que cualquier integrante pudiera retomar el proyecto.
+- ✅ Funcionó: ramas `develop`/`main` con `main` protegida, CI obligatorio y despliegue continuo desde `main`.
+- 🎯 Para otro proyecto: confirmar la participación real del equipo en la primera semana y repartir módulos desde el inicio.

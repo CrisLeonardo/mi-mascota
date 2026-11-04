@@ -4,7 +4,7 @@
 |---|---|
 | **Producto** | Mi Mascota — Sistema de gestión para clínica veterinaria |
 | **Versión** | 1.0 |
-| **Equipo** | ✏️ Nombres de los 5 integrantes y su rol (ver `04_SCRUM.md`) |
+| **Equipo** | Cristopher Leonardo Zepeda Esquivel (único integrante que trabajó en el proyecto; ver `04_SCRUM.md`) |
 | **Curso** | Desarrollo Web — Universidad Mariano Gálvez de Guatemala |
 
 ## 1. Nombre del proyecto

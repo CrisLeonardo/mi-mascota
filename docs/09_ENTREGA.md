@@ -1,32 +1,32 @@
 # 9. Entrega y presentación
 
-## 1. Qué ya está hecho y qué deben hacer ustedes
+## 1. Estado de la entrega (2026-11-03)
 
-El código, la base de datos, la API, las pruebas, el CI y la documentación técnica **ya están construidos**.
-Lo que el enunciado evalúa y que **solo el equipo puede hacer de forma real** es:
+Aplicación desplegada: **<https://mi-mascota-o2sm.onrender.com>** · Repositorio: <https://github.com/CrisLeonardo/mi-mascota> ·
+Tablero: <https://github.com/users/CrisLeonardo/projects/1>
 
-| # | Pendiente del equipo | Dónde | Pts de rúbrica |
-|---|---|---|:-:|
-| 1 | Elegir/confirmar el negocio **real**, hacer la visita o entrevista y completar los ✏️ | `01_LEVANTAMIENTO_NEGOCIO.md` | Gestión (3) |
-| 2 | Escribir nombres e integrantes y roles Scrum | `02_PRD.md`, `04_SCRUM.md` | Gestión (3) |
-| 3 | Crear el tablero (Trello/GitHub Projects), cargar `BACKLOG.csv`, asignar responsables y mover tarjetas con evidencia | `04_SCRUM.md` | Gestión (3) |
-| 4 | Crear el repositorio en GitHub, que **cada integrante** haga sus commits y Pull Requests | `05_GIT_Y_COLABORACION.md` | Gestión (3) / Código (4) |
-| 5 | Desplegar en Render y probar la URL | `07_DESPLIEGUE.md` | Tecnología (3) |
-| 6 | Exportar el diagrama ER a imagen y ponerlo en la presentación | `diagrama_er.html` | Gestión (3) |
-| 7 | **Estudiar la guía** y ensayar la presentación | `GUIA_DE_ESTUDIO.md` | Código/dominio (4) |
-| 8 | Hacer el checklist de pruebas manuales en la URL desplegada | `06_PLAN_DE_PRUEBAS.md` | Funcionalidad (5) |
+| # | Elemento | Estado |
+|---|---|---|
+| 1 | Negocio y levantamiento | Se usó el caso del enunciado (Veterinaria "Mi Mascota"). **No hubo entrevista a un negocio real**; `01_LEVANTAMIENTO_NEGOCIO.md` lo declara. |
+| 2 | Integrantes y roles | Solo Cristopher Leonardo Zepeda Esquivel trabajó (todos los roles). Los otros 4 integrantes no participaron; está declarado en `02_PRD.md` y `04_SCRUM.md`. |
+| 3 | Tablero | GitHub Projects con las 18 historias asignadas, cerradas con evidencia y en *Finalizado*. |
+| 4 | Repositorio | GitHub, ramas `main` (protegida) y `develop`, PRs y CI en verde. Un solo autor de commits. |
+| 5 | Despliegue | Render + PostgreSQL, HTTPS con HSTS. |
+| 6 | Diagrama ER | `diagrama_er.html` y `diagrama_er.svg` (imagen exportada). |
+| 7 | Estudio de la guía | `GUIA_DE_ESTUDIO.md`. |
+| 8 | Pruebas manuales en la URL desplegada | Checklist de `06_PLAN_DE_PRUEBAS.md` (ejecutar en la URL real antes de presentar). |
 
 ## 2. Checklist final contra el enunciado
 
 | Requisito del PDF | Cumplido con | ✔ |
 |---|---|:-:|
-| Negocio real con problema, necesidad y solución | `01_LEVANTAMIENTO_NEGOCIO.md` (completar con datos reales) | ☐ |
-| Equipo de 5 con Scrum y roles | `04_SCRUM.md` + tablero | ☐ |
+| Negocio con problema, necesidad y solución | `01_LEVANTAMIENTO_NEGOCIO.md` (caso del enunciado, sin entrevista real) | ⚠️ |
+| Equipo de 5 con Scrum y roles | `04_SCRUM.md`: un solo integrante participó | ⚠️ |
 | PRD completo (nombre, descripción, problema, objetivo, alcance, fuera de alcance, usuarios, RF, RNF, criterios) | `02_PRD.md` | ✅ |
-| Plataforma de gestión con las 5 columnas, responsables y evidencia | Tablero del equipo | ☐ |
+| Plataforma de gestión con las 5 columnas, responsables y evidencia | GitHub Projects | ✅ |
 | Frontend profesional y responsivo (PC y móvil) | Bootstrap 5, plantillas Django | ✅ |
 | Backend | Django | ✅ |
-| Base de datos relacional + Diagrama ER | PostgreSQL, `03_DIAGRAMA_ER.md` | ✅ |
+| Base de datos relacional + Diagrama ER | PostgreSQL, `03_DIAGRAMA_ER.md`, `diagrama_er.svg` | ✅ |
 | Autenticación | Login/logout, cambio de contraseña | ✅ |
 | Autorización (roles y permisos) | 3 roles, matriz de permisos | ✅ |
 | CRUD | Clientes, mascotas, servicios, usuarios, citas, consultas, vacunas | ✅ |
@@ -36,9 +36,9 @@ Lo que el enunciado evalúa y que **solo el equipo puede hacer de forma real** e
 | Búsquedas, filtros y paginación | Todos los listados | ✅ |
 | Seguridad | CSRF, XSS, SQLi, hashing, HTTPS/HSTS | ✅ |
 | Testing | 67 pruebas automáticas + checklist manual | ✅ |
-| Git (commits, ramas, PRs, participación) | Repositorio del equipo | ☐ |
-| CI/CD | GitHub Actions + despliegue automático en Render | ✅ (al subir a GitHub) |
-| Aplicación desplegada | Render | ☐ |
+| Git (commits, ramas, PRs, participación) | Repositorio con ramas y PRs; **un solo participante** | ⚠️ |
+| CI/CD | GitHub Actions + despliegue automático en Render | ✅ |
+| Aplicación desplegada | <https://mi-mascota-o2sm.onrender.com> | ✅ |
 
 ## 3. Guion de presentación (15 minutos, 5 personas)
 

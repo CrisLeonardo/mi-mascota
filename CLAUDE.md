@@ -3,24 +3,25 @@
 Sistema web de gestión para una **veterinaria** (negocio por defecto = ejemplo del PDF del curso; el equipo aún no
 confirmó un negocio real). Proyecto final de Desarrollo Web, Universidad Mariano Gálvez. Equipo de 5 con Scrum.
 
-## Estado (2026-11-02)
+## Estado (2026-11-03)
 
 **Hecho y verificado:** código completo, 67 pruebas pasando en SQLite (1 se omite: solo corre en PostgreSQL) y
 **67/67 en PostgreSQL 16 + Python 3.12 + `DEBUG=False`** (pasos del CI reproducidos en Docker el 2026-11-02),
 `check --deploy` limpio, interfaz probada en navegador (login, horarios por fetch, cambio de estado, gráficas,
 sin scroll horizontal en 375 px). Documentación y guía de estudio escritas.
 
-**No hecho / no verificado:**
-- Repo creado: **https://github.com/CrisLeonardo/mi-mascota** (público), ramas `main` y `develop`, commit inicial de
-  Cristopher. CI en verde en ambas (67 pruebas en PostgreSQL). `main` protegida: PR con 1 aprobación, check
-  `pruebas` obligatorio y al día, conversaciones resueltas, sin force push ni borrado (`enforce_admins` desactivado:
-  el dueño puede saltarse la regla en emergencias). `develop` sin protección. **Falta:** invitar a los otros 4
-  integrantes (Settings → Collaborators).
-  **No commitear a nombre del equipo**: cada integrante debe tener commits propios (ver `docs/05_GIT_Y_COLABORACION.md`).
-- Tablero Scrum creado: https://github.com/users/CrisLeonardo/projects/1 (público, ligado al repo; 5 columnas del enunciado). 18 historias = issues #1-#18 con hitos Sprint 1-4, **sin responsable ni cerradas a propósito** (el equipo las toma y mueve con evidencia; no marcar nada como Finalizado por ellos). Falta: que cada integrante se asigne sus historias (como el tablero es público, ya lo ve el docente; para editar, los compañeros necesitan acceso en Settings → Manage access).
-- No desplegado en Render.
-- Tablero Scrum, entrevista al negocio real, nombres de integrantes (marcados con ✏️ en `docs/`) los debe completar el equipo. No fabricar historial ni evidencia.
-- Screenshots del navegador fallaron en la sesión; el responsivo se verificó con mediciones, no a ojo.
+**Entrega (2026-11-03):**
+- Desplegado en Render: **https://mi-mascota-o2sm.onrender.com** (verificado: login 200, HTTPS/HSTS, rutas protegidas redirigen, API sin sesión 403, login responsivo sin scroll horizontal a 375 px). No se probó iniciar sesión en producción (no se escriben contraseñas ahí); hacerlo a mano con el checklist de `docs/06`.
+- Repo: **https://github.com/CrisLeonardo/mi-mascota** (público), ramas `main` y `develop`, CI en verde. `main` protegida (PR con 1 aprobación, check `pruebas`, `enforce_admins` desactivado). Solo hay un colaborador/autor: Cristopher.
+- Tablero: https://github.com/users/CrisLeonardo/projects/1 — las 18 historias (#1-#18) asignadas a `CrisLeonardo`, cerradas con comentario de evidencia y en *Finalizado* (autorizado por el usuario el 2026-11-03).
+- **Verdad documentada, no fabricada:** los otros 4 integrantes no respondieron ni participaron; `docs/02`, `04` y `09` dicen que solo trabajó Cristopher (todos los roles). `docs/01` declara que se usó el caso del enunciado y que **no hubo entrevista real** (datos operativos = supuestos). No inventar reuniones, retros, nombres ni entrevistas.
+- Diagrama ER exportado: `docs/diagrama_er.svg` (generado desde `diagrama_er.html` con Mermaid).
+
+**Pendiente (solo lo puede hacer el usuario):**
+- Hacer el checklist manual de `docs/06` en la URL de Render (login con usuarios demo si `SEED_DEMO=true`).
+- Si consigue una veterinaria real (aunque sea una llamada de 10 min), reemplazar la sección 2 de `docs/01` con respuestas reales.
+- Estudiar `GUIA_DE_ESTUDIO.md` y ensayar la presentación (`docs/09`).
+- Screenshots del navegador fallaron en sesiones anteriores; en esta se verificó el login móvil (las animaciones de entrada no avanzan en el pane emulado: terminarlas con `document.getAnimations().forEach(a=>a.finish())` antes de la captura).
 
 ## Stack y comandos (Windows, Python 3.14 local; CI/Render usan 3.12)
 
@@ -70,8 +71,6 @@ Si cambias código o comportamiento, actualiza la guía, el PRD/API y la cifra d
 
 ## Siguientes pasos probables
 
-1. Que el equipo confirme el negocio real y complete los ✏️.
-2. Invitar colaboradores (ver arriba); cada integrante trabaja en ramas desde `develop` con PRs.
-3. Desplegar en Render (`render.yaml`, `build.sh`), probar con el checklist de `docs/06`.
-4. Ejercicios 1-3 de la guía como contribuciones individuales con sus propios PRs.
-5. Opcional: `django-axes` (bloqueo de login); `ExclusionConstraint` como defensa extra a nivel de base.
+1. Probar a mano la URL de Render con el checklist de `docs/06` y ensayar la demo (`docs/09`).
+2. Opcional: invitar colaboradores si algún compañero responde (Settings → Collaborators) y que hagan sus propios PRs; actualizar entonces `docs/04`.
+3. Opcional: `django-axes` (bloqueo de login); `ExclusionConstraint` como defensa extra a nivel de base.

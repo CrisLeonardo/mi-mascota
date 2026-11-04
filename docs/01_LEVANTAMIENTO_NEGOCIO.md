@@ -1,25 +1,30 @@
 # 1. Levantamiento de información del negocio
 
-> **Nota para el equipo:** este documento está redactado para el negocio de ejemplo del enunciado
-> (**Veterinaria "Mi Mascota"**). Antes de entregar, **visiten una veterinaria real** (o hagan una entrevista
-> por teléfono), anoten las respuestas reales en la sección 2 y ajusten lo que sea distinto. El sistema ya
-> permite cambiar nombre, teléfono, dirección y horario desde variables de entorno (`.env`), sin tocar código.
-> Los puntos marcados con ✏️ son los que **deben completar con datos reales**.
+> **Transparencia sobre el origen de la información.** El proyecto se desarrolló sobre el caso que plantea el propio
+> enunciado del curso: la **Veterinaria "Mi Mascota"**, cuyo problema (citas por llamadas telefónicas y agenda física)
+> y solución (administrar clientes, mascotas, servicios, citas y expedientes) vienen descritos en el PDF del proyecto.
+> **No se realizó una visita ni una entrevista a una veterinaria real**; los datos operativos de esta sección
+> (personal, horario, volumen de clientes) son **supuestos razonables** para dimensionar el sistema, no cifras
+> medidas. Todo es configurable desde variables de entorno (nombre, teléfono, dirección y horario), de modo que el
+> sistema se puede adaptar a un negocio concreto sin tocar código.
 
 ## 1. Datos del negocio
 
 | Dato | Valor |
 |---|---|
-| Nombre | Veterinaria "Mi Mascota" ✏️ |
+| Nombre | Veterinaria "Mi Mascota" (caso del enunciado) |
 | Giro | Clínica veterinaria de consulta general, vacunación y estética |
-| Ubicación | Ciudad de Guatemala ✏️ |
-| Personal | 1 administrador/dueño, 1 recepcionista, 2 veterinarios ✏️ |
-| Horario | Lunes a sábado, 8:00 a 17:00 ✏️ |
-| Clientes atendidos | Aproximadamente 15 a 25 por día ✏️ |
+| Ubicación | Ciudad de Guatemala (supuesto) |
+| Personal | 1 administrador/dueño, 1 recepcionista, 2 veterinarios (supuesto) |
+| Horario | Lunes a sábado, 8:00 a 17:00 (supuesto) |
+| Clientes atendidos | Aproximadamente 15 a 25 por día (supuesto) |
 
-## 2. Entrevista realizada ✏️
+## 2. Escenario de trabajo (no es una entrevista real)
 
-| # | Pregunta | Respuesta del negocio |
+Las preguntas son las que se harían a la veterinaria; las respuestas son el **escenario descrito por el enunciado y
+supuestos típicos del sector**, no declaraciones de una persona entrevistada.
+
+| # | Pregunta | Escenario considerado |
 |---|---|---|
 | 1 | ¿Cómo registran hoy las citas? | Por llamada telefónica o WhatsApp, anotadas en una agenda de papel. |
 | 2 | ¿Qué pasa cuando dos clientes piden la misma hora? | A veces se duplican citas y un veterinario queda con dos pacientes a la vez. |
