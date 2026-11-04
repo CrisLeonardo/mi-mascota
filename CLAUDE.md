@@ -8,7 +8,7 @@ confirmó un negocio real). Proyecto final de Desarrollo Web, Universidad Marian
 **Hecho y verificado:** código completo, 67 pruebas pasando en SQLite (1 se omite: solo corre en PostgreSQL) y
 **67/67 en PostgreSQL 16 + Python 3.12 + `DEBUG=False`** (pasos del CI reproducidos en Docker el 2026-11-02),
 `check --deploy` limpio, interfaz probada en navegador (login, horarios por fetch, cambio de estado, gráficas,
-sin scroll horizontal en 375 px). Documentación y guía de estudio escritas.
+sin scroll horizontal en 375 px). Documentación escrita. La guía de estudio ya no está en el repo: vive en `../guia-de-estudio/` (carpeta hermana, fuera de Git, a pedido del usuario; PDF + Markdown).
 
 **Entrega (2026-11-03):**
 - Desplegado en Render: **https://mi-mascota-o2sm.onrender.com** (verificado: login 200, HTTPS/HSTS, rutas protegidas redirigen, API sin sesión 403, login responsivo sin scroll horizontal a 375 px). No se probó iniciar sesión en producción (no se escriben contraseñas ahí); hacerlo a mano con el checklist de `docs/06`.
@@ -20,7 +20,7 @@ sin scroll horizontal en 375 px). Documentación y guía de estudio escritas.
 **Pendiente (solo lo puede hacer el usuario):**
 - Checklist manual de `docs/06`: los 20 casos pasaron en **local** el 2026-11-03 (y se corrigió un bug de búsqueda en vivo en `app.js`). Falta repetirlo **con sesión en Render** (lo debe hacer el usuario o iniciar sesión él en el pane del navegador).
 - Si consigue una veterinaria real (aunque sea una llamada de 10 min), reemplazar la sección 2 de `docs/01` con respuestas reales.
-- Estudiar `GUIA_DE_ESTUDIO.md` y ensayar la presentación (`docs/09`).
+- Estudiar la guía (`../guia-de-estudio/GUIA_DE_ESTUDIO_EQUIPO.pdf`) y ensayar la presentación (`docs/09`).
 - Screenshots del navegador fallaron en sesiones anteriores; en esta se verificó el login móvil (las animaciones de entrada no avanzan en el pane emulado: terminarlas con `document.getAnimations().forEach(a=>a.finish())` antes de la captura).
 
 ## Stack y comandos (Windows, Python 3.14 local; CI/Render usan 3.12)
@@ -58,14 +58,14 @@ Decisiones que no hay que deshacer sin motivo:
 - WhiteNoise solo se agrega al middleware si `DEBUG=False`; con `DEBUG=False` las plantillas necesitan `collectstatic` antes de correr pruebas (por eso el CI lo ejecuta primero).
 - `SECRET_KEY` es obligatoria cuando `DJANGO_DEBUG=False`.
 
-## Limitaciones conocidas (documentadas en `GUIA_DE_ESTUDIO.md` §19)
+## Limitaciones conocidas (documentadas en la guía de estudio, §C.19)
 
 Agenda protegida solo desde Django (sin `ExclusionConstraint`), sin bloqueo de login por intentos, sin recordatorios automáticos,
 sin auditoría, sin pruebas automatizadas de UI.
 
 ## Documentación
 
-`GUIA_DE_ESTUDIO.md` (guía didáctica para el equipo, con preguntas del docente y ejercicios) · `README.md` · `docs/01..09`
+Guía de estudio por roles (fuera del repo, en `../guia-de-estudio/`) · `README.md` · `docs/01..09`
 (levantamiento, PRD, ER + `diagrama_er.html`, Scrum + `BACKLOG.csv`, Git, pruebas, despliegue en Render, API, entrega/presentación).
 Si cambias código o comportamiento, actualiza la guía, el PRD/API y la cifra de pruebas (aparece en README, guía, `docs/06`, `docs/09`).
 

@@ -13,7 +13,7 @@ Tablero: <https://github.com/users/CrisLeonardo/projects/1>
 | 4 | Repositorio | GitHub, ramas `main` (protegida) y `develop`, PRs y CI en verde. Un solo autor de commits. |
 | 5 | Despliegue | Render + PostgreSQL, HTTPS con HSTS. |
 | 6 | Diagrama ER | `diagrama_er.html` y `diagrama_er.svg` (imagen exportada). |
-| 7 | Estudio de la guía | `GUIA_DE_ESTUDIO.md`. |
+| 7 | Estudio de la guía | Guía privada del equipo (fuera del repositorio). |
 | 8 | Pruebas manuales en la URL desplegada | Checklist de `06_PLAN_DE_PRUEBAS.md` (ejecutar en la URL real antes de presentar). |
 
 ## 2. Checklist final contra el enunciado
@@ -73,4 +73,4 @@ Cada persona habla ~3 minutos y **contesta preguntas de cualquier parte**.
 
 ## 4. Preguntas que suele hacer el docente
 
-Las respuestas están desarrolladas en la sección 17 de `GUIA_DE_ESTUDIO.md`.
+Las respuestas están desarrolladas en la guía de estudio privada del equipo (sección C.17).
