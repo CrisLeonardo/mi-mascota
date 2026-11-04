@@ -4,8 +4,6 @@ Aplicación web para una clínica veterinaria: clientes, mascotas, agenda de cit
 clínicos, control de vacunas, panel de indicadores y API REST. Proyecto final del curso **Desarrollo Web**
 (Universidad Mariano Gálvez de Guatemala).
 
-> 📘 **¿Primera vez con el proyecto? Empieza por [`GUIA_DE_ESTUDIO.md`](GUIA_DE_ESTUDIO.md).**
-
 **Aplicación desplegada:** <https://mi-mascota-o2sm.onrender.com> (plan gratuito de Render: la primera visita puede tardar ~30 s en despertar).
 
 **Stack:** Django 5.2 · Django REST Framework · PostgreSQL (SQLite en local) · Bootstrap 5 · JavaScript (fetch) · Chart.js · GitHub Actions · Render
@@ -65,7 +63,6 @@ docs/          Documentación del proyecto
 
 | Documento | Contenido |
 |---|---|
-| [`GUIA_DE_ESTUDIO.md`](GUIA_DE_ESTUDIO.md) | **Todo para entender y defender el proyecto** |
 | [`docs/01_LEVANTAMIENTO_NEGOCIO.md`](docs/01_LEVANTAMIENTO_NEGOCIO.md) | Negocio, problema, necesidad, solución |
 | [`docs/02_PRD.md`](docs/02_PRD.md) | Product Requirements Document |
 | [`docs/03_DIAGRAMA_ER.md`](docs/03_DIAGRAMA_ER.md) | Diagrama Entidad-Relación y diccionario de datos |
@@ -81,6 +78,6 @@ docs/          Documentación del proyecto
 | Criterio | Pts | Dónde está |
 |---|:-:|---|
 | Gestión y documentación | 3 | `docs/` · tablero Scrum · PRD · ER · repositorio con PRs |
-| Calidad del código y dominio técnico | 4 | Apps separadas, reglas de negocio en el modelo, 67 pruebas, `GUIA_DE_ESTUDIO.md` |
+| Calidad del código y dominio técnico | 4 | Apps separadas, reglas de negocio en el modelo, 67 pruebas |
 | Funcionalidad y solución del problema | 5 | Agenda sin traslapes, expediente digital, vacunas, panel, roles |
 | Tecnologías y arquitectura | 3 | Django + DRF + PostgreSQL + Bootstrap + fetch + CI/CD + despliegue |

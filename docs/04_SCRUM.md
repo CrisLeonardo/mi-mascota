@@ -12,7 +12,7 @@
 | Cristopher Leonardo Zepeda Esquivel (`CrisLeonardo`) | **Product Owner, Scrum Master y Desarrollador** (todos los roles) | Priorizar el backlog, organizar el tablero y construir, probar y desplegar el sistema | PRD y levantamiento, Git/GitHub y CI, backend, frontend, API REST, pruebas, seguridad y despliegue |
 | Otros 4 integrantes del grupo | Sin participación | — | — |
 
-Regla del curso: **todos deben saber explicar todo el proyecto** (ver `GUIA_DE_ESTUDIO.md`). El PO y el SM también
+Regla del curso: **todos deben saber explicar todo el proyecto**. El PO y el SM también
 programan o documentan.
 
 ## 2. Herramienta de gestión
