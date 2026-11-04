@@ -13,8 +13,9 @@
 
 ## 2. Descripción del negocio
 
-Veterinaria de barrio que ofrece consulta general, vacunación, desparasitación, estética y cirugías menores.
+Veterinaria "Mi Mascota" (caso de estudio del enunciado del curso): una veterinaria de barrio que ofrece consulta general, vacunación, desparasitación, estética y cirugías menores.
 Atiende de lunes a sábado de 8:00 a 17:00 con dos veterinarios, una recepcionista y un administrador.
+Los datos de personal y horario son supuestos de dimensionamiento; no se entrevistó a un negocio real.
 Detalle completo en `01_LEVANTAMIENTO_NEGOCIO.md`.
 
 ## 3. Problema
@@ -132,14 +133,14 @@ información sobre el desempeño del negocio.
 ## 11. Definición de Terminado (DoD)
 
 Una historia está terminada cuando: cumple sus criterios de aceptación · tiene validaciones en cliente y servidor ·
-respeta permisos por rol · tiene pruebas automáticas que pasan · se ve bien en celular · fue revisada por otro
-integrante mediante Pull Request · está integrada en `main` y la tarjeta pasó a "Finalizado" con evidencia.
+respeta permisos por rol · tiene pruebas automáticas que pasan · se ve bien en celular · pasó por Pull Request
+(ideal: revisada por otro integrante; en este proyecto no hubo más participantes) · está integrada en `main` y la tarjeta pasó a "Finalizado" con evidencia.
 
 ## 12. Riesgos
 
 | Riesgo | Probabilidad | Mitigación |
 |---|:-:|---|
-| Un integrante hace casi todo el trabajo | Media | Tablero con responsables, Pull Requests obligatorios con revisor distinto, revisión semanal de commits. |
+| Un integrante hace casi todo el trabajo | Media | Tablero con responsables, Pull Requests obligatorios con revisor distinto, revisión semanal de commits. **Se materializó:** solo participó una persona; se mitigó con pruebas automáticas, CI y documentación completa. |
 | Choques de código en Git | Media | Ramas por funcionalidad, `main` protegida, integración frecuente. |
 | Falla el despliegue el día de la presentación | Baja | Desplegar desde el Sprint 2, `render.yaml` versionado, datos demo reproducibles. |
 | Plan gratuito del hosting "duerme" la app | Alta | Abrir la URL 5 minutos antes de presentar; tener video de respaldo. |
