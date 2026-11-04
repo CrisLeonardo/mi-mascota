@@ -34,28 +34,32 @@ def test_no_permite_traslape_del_veterinario(self):
 
 Usuarios demo (`python manage.py seed_demo`; contraseña `Demo12345!`): `admin`, `recepcion`, `vet_ana`, `vet_luis`.
 
+**Ejecución del 2026-11-03** (Claude Code controlando el navegador): los 20 casos se corrieron en **local** (Django, SQLite, datos demo) con usuarios `recepcion` y `vet_ana`; los datos de prueba se descartaron restaurando la base. En la URL de **Render** solo se verificó lo que no requiere sesión (login 200, HTTPS/HSTS, rutas protegidas redirigen, API sin sesión 403, login sin scroll horizontal a 375 px). **Falta repetir el recorrido con sesión en la URL de Render** (hacerlo a mano antes de presentar).
+
+Observaciones: el caso 6 (búsqueda en vivo) reveló un error real: desde la segunda búsqueda la URL acumulaba `?q=a?q=ab…` y la tabla quedaba vacía; se corrigió en `static/js/app.js` y se volvió a probar. El caso 7 se verificó en la lista de citas (10 por página); las demás listas demo tienen menos de 10 registros. En el caso 10, la interfaz no ofrece las horas ocupadas, por lo que el traslape se probó contra `POST /api/citas/` (400 "El veterinario ya tiene una cita en ese horario").
+
 | # | Caso | Pasos | Resultado esperado | ✔ |
 |---|---|---|---|:-:|
-| 1 | Login incorrecto | Usuario `admin`, clave mala | Mensaje "Usuario o contraseña incorrectos" | ☐ |
-| 2 | Login correcto | `recepcion` / clave correcta | Entra al panel con menú de su rol | ☐ |
-| 3 | Permisos veterinario | Entrar como `vet_ana` → ir a `/clientes/nuevo/` | Página "No tienes permiso" | ☐ |
-| 4 | Permisos recepción | Como `recepcion` abrir `/expedientes/consultas/nueva/?mascota=1` | 403 | ☐ |
-| 5 | Crear cliente | Recepción → Clientes → Nuevo, teléfono `123` | Error de teléfono; con `2222-3333` guarda | ☐ |
-| 6 | Búsqueda en vivo | Clientes → escribir "lóp" | Tabla se filtra sin recargar la página | ☐ |
-| 7 | Paginación | Lista con > 10 registros | Botones de página funcionan | ☐ |
-| 8 | Crear mascota | Cliente → Agregar mascota, nacimiento futuro | Error; con fecha válida guarda | ☐ |
-| 9 | Agendar cita | Citas → Agendar: elegir servicio, veterinario, fecha | La lista de horas se llena sola y no incluye las ocupadas | ☐ |
-| 10 | Traslape | Agendar a la misma hora/veterinario (forzando) | Rechazo "ya tiene una cita" | ☐ |
-| 11 | Domingo | Elegir un domingo | "Sin horarios libres ese día" | ☐ |
-| 12 | Confirmar sin recargar | Lista de citas → botón ✔ | Toast verde y estado cambia a "Confirmada" | ☐ |
-| 13 | Cancelar | Botón ✖ → aceptar confirmación | Estado "Cancelada"; se libera el horario | ☐ |
-| 14 | Atender cita | `vet_ana` → cita confirmada → Atender → guardar | Consulta en expediente; cita "Atendida" | ☐ |
-| 15 | Vacuna vencida | Mascota "Luna" | Marca "Vencida" en la vacuna | ☐ |
-| 16 | Eliminar con relaciones | Eliminar cliente con mascotas | Mensaje "No se puede eliminar…" | ☐ |
-| 17 | Panel | Abrir panel | Indicadores y 2 gráficas con datos | ☐ |
-| 18 | Celular | Abrir en 375 px (F12 → móvil) | Menú ☰ deslizable, sin scroll horizontal | ☐ |
-| 19 | API sin sesión | Abrir `/api/clientes/` en ventana privada | 403 | ☐ |
-| 20 | Cerrar sesión | Menú de usuario → Cerrar sesión | Vuelve al login | ☐ |
+| 1 | Login incorrecto | Usuario `admin`, clave mala | Mensaje "Usuario o contraseña incorrectos" | ✅ |
+| 2 | Login correcto | `recepcion` / clave correcta | Entra al panel con menú de su rol | ✅ |
+| 3 | Permisos veterinario | Entrar como `vet_ana` → ir a `/clientes/nuevo/` | Página "No tienes permiso" | ✅ |
+| 4 | Permisos recepción | Como `recepcion` abrir `/expedientes/consultas/nueva/?mascota=1` | 403 | ✅ |
+| 5 | Crear cliente | Recepción → Clientes → Nuevo, teléfono `123` | Error de teléfono; con `2222-3333` guarda | ✅ |
+| 6 | Búsqueda en vivo | Clientes → escribir "lóp" | Tabla se filtra sin recargar la página | ✅ |
+| 7 | Paginación | Lista con > 10 registros | Botones de página funcionan | ✅ |
+| 8 | Crear mascota | Cliente → Agregar mascota, nacimiento futuro | Error; con fecha válida guarda | ✅ |
+| 9 | Agendar cita | Citas → Agendar: elegir servicio, veterinario, fecha | La lista de horas se llena sola y no incluye las ocupadas | ✅ |
+| 10 | Traslape | Agendar a la misma hora/veterinario (forzando) | Rechazo "ya tiene una cita" | ✅ |
+| 11 | Domingo | Elegir un domingo | "Sin horarios libres ese día" | ✅ |
+| 12 | Confirmar sin recargar | Lista de citas → botón ✔ | Toast verde y estado cambia a "Confirmada" | ✅ |
+| 13 | Cancelar | Botón ✖ → aceptar confirmación | Estado "Cancelada"; se libera el horario | ✅ |
+| 14 | Atender cita | `vet_ana` → cita confirmada → Atender → guardar | Consulta en expediente; cita "Atendida" | ✅ |
+| 15 | Vacuna vencida | Mascota "Luna" | Marca "Vencida" en la vacuna | ✅ |
+| 16 | Eliminar con relaciones | Eliminar cliente con mascotas | Mensaje "No se puede eliminar…" | ✅ |
+| 17 | Panel | Abrir panel | Indicadores y 2 gráficas con datos | ✅ |
+| 18 | Celular | Abrir en 375 px (F12 → móvil) | Menú ☰ deslizable, sin scroll horizontal | ✅ |
+| 19 | API sin sesión | Abrir `/api/clientes/` en ventana privada | 403 | ✅ |
+| 20 | Cerrar sesión | Menú de usuario → Cerrar sesión | Vuelve al login | ✅ |
 
 ## 3. Pruebas de seguridad realizadas
 
